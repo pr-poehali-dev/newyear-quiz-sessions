@@ -1,0 +1,22 @@
+{
+  "tests": [
+    {
+      "name": "Test quiz submission",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "photoType": "family",
+        "participants": "3-4",
+        "location": "studio",
+        "name": "Иван Иванов",
+        "phone": "+7 (999) 123-45-67",
+        "email": "test@example.com"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

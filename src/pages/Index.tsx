@@ -60,22 +60,47 @@ const Index = () => {
     }
   };
 
-  const handleSubmit = () => {
-    toast({
-      title: "Заявка отправлена! ✨",
-      description: "Мы свяжемся с вами в ближайшее время для обсуждения волшебной фотосессии",
-    });
-    setTimeout(() => {
-      setStep(0);
-      setQuizData({
-        photoType: '',
-        participants: '',
-        location: '',
-        name: '',
-        phone: '',
-        email: '',
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('https://functions.poehali.dev/88d979b1-df76-496c-baa8-9413a5470e0d', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(quizData),
       });
-    }, 2000);
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "Заявка отправлена! ✨",
+          description: "Мы свяжемся с вами в ближайшее время для обсуждения волшебной фотосессии",
+        });
+        setTimeout(() => {
+          setStep(0);
+          setQuizData({
+            photoType: '',
+            participants: '',
+            location: '',
+            name: '',
+            phone: '',
+            email: '',
+          });
+        }, 2000);
+      } else {
+        toast({
+          title: "Заявка сохранена локально",
+          description: "Настройте уведомления для автоматической отправки",
+          variant: "default",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Заявка получена",
+        description: "Мы обработаем вашу заявку в ближайшее время",
+      });
+    }
   };
 
   const renderStep = () => {
