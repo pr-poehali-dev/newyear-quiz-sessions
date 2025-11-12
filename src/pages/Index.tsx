@@ -166,19 +166,19 @@ const Index = () => {
 
               <Card
                 className={`p-6 cursor-pointer transition-all hover:scale-102 hover:shadow-xl ${
-                  quizData.photoType === 'santa' ? 'border-primary border-2 bg-primary/10' : ''
+                  quizData.photoType === 'individual' ? 'border-primary border-2 bg-primary/10' : ''
                 }`}
-                onClick={() => setQuizData({ ...quizData, photoType: 'santa' })}
+                onClick={() => setQuizData({ ...quizData, photoType: 'individual' })}
               >
                 <div className="flex items-start gap-4">
-                  <RadioGroupItem value="santa" id="santa" />
+                  <RadioGroupItem value="individual" id="individual" />
                   <div className="flex-1">
-                    <Label htmlFor="santa" className="text-xl font-semibold cursor-pointer flex items-center gap-2">
-                      <span className="text-3xl">🎅</span>
-                      С Дедом Морозом и Снегурочкой
+                    <Label htmlFor="individual" className="text-xl font-semibold cursor-pointer flex items-center gap-2">
+                      <span className="text-3xl">✨</span>
+                      Индивидуальная фотосессия
                     </Label>
                     <p className="text-sm text-muted-foreground mt-2">
-                      Настоящее волшебство с любимыми сказочными героями
+                      Персональная съёмка в волшебной новогодней атмосфере
                     </p>
                   </div>
                 </div>
@@ -378,14 +378,14 @@ const Index = () => {
                   <div className="text-3xl">
                     {quizData.photoType === 'family' && '👨‍👩‍👧‍👦'}
                     {quizData.photoType === 'kids' && '👶'}
-                    {quizData.photoType === 'santa' && '🎅'}
+                    {quizData.photoType === 'individual' && '✨'}
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg">Тип фотосессии</h3>
                     <p className="text-muted-foreground">
                       {quizData.photoType === 'family' && 'Семейная фотосессия'}
                       {quizData.photoType === 'kids' && 'Детская фотосессия'}
-                      {quizData.photoType === 'santa' && 'С Дедом Морозом и Снегурочкой'}
+                      {quizData.photoType === 'individual' && 'Индивидуальная фотосессия'}
                     </p>
                   </div>
                 </div>
